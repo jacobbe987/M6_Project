@@ -6,6 +6,8 @@ public class ChargeTimeTurret : Turrets
 {
     [SerializeField] private float _chargetime;
     [SerializeField] private float _timerToShoot;
+
+    private bool _isShooting= false;
     protected override void Shoot()
     {
         Instantiate(_bulletPrefab,_firePoint.position, _firePoint.rotation);
@@ -22,13 +24,25 @@ public class ChargeTimeTurret : Turrets
         if (_isPlayerInRange)
         {
             AimAtPlayer();
-            _timerToShoot += Time.deltaTime;
-            if (_timerToShoot >= _chargetime)
+            if (!_isShooting)
             {
-                Shoot();
-                _timerToShoot = 0;
+                StartCoroutine(ShootRoutine());
             }
+            //_timerToShoot += Time.deltaTime;
+            //if (_timerToShoot >= _chargetime)
+            //{
+            //    Shoot();
+            //    _timerToShoot = 0;
+            //}
             
         }
+    }
+
+    private IEnumerator ShootRoutine()
+    {
+        _isShooting=true;
+        yield return new WaitForSeconds(_chargetime);
+        Shoot();
+        _isShooting = false;
     }
 }
