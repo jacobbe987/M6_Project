@@ -6208,6 +6208,8 @@ GameObject:
   - component: {fileID: 1575904718}
   - component: {fileID: 1575904717}
   - component: {fileID: 1575904721}
+  - component: {fileID: 1575904723}
+  - component: {fileID: 1575904722}
   m_Layer: 5
   m_Name: CanvasGameStatus
   m_TagString: Untagged
@@ -6312,8 +6314,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 344399136}
-  _lifebarFillable: {fileID: 1516386368}
+  _lifeBar: {fileID: 1575904723}
+  _timer: {fileID: 1575904722}
+--- !u!114 &1575904722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575904716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87d05f515c04da4db59063aeebc8466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _timerText: {fileID: 619379014}
+--- !u!114 &1575904723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575904716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30644859854682b468a3def3e12010f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fillableLifebar: {fileID: 1516386368}
 --- !u!1001 &1576432381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6337,6 +6365,11 @@ PrefabInstance:
       propertyPath: _onChangeHp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1575904721}
+    - target: {fileID: 6368060347781943903, guid: 8e90bdc2658306641b21a7eb1cc5fcac,
+        type: 3}
+      propertyPath: _onChangeHp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_GameStatus, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7935902981751981212, guid: 8e90bdc2658306641b21a7eb1cc5fcac,
         type: 3}
       propertyPath: m_LocalPosition.x

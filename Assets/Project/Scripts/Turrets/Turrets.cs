@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 
-public class Turrets : MonoBehaviour
+public abstract class Turrets : MonoBehaviour
 {
     [SerializeField] protected Transform _firePoint;
     [SerializeField] protected GameObject _bulletPrefab;
@@ -29,10 +29,7 @@ public class Turrets : MonoBehaviour
         _isPlayerInRange = Physics.CheckSphere(transform.position, _checkPlayerInRange, _playerMask);
     }
 
-    protected virtual void Shoot()
-    {
-
-    }
+    protected abstract void Shoot();
 
     protected virtual void Update()
     {

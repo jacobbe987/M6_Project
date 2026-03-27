@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _countdown;
 
     public float Countdown=>_countdown;
-
+    public LifeController LifeController => _lifecontroller;
     private void Awake()
     {
         GameResumed();
