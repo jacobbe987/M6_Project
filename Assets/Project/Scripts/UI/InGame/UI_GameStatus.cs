@@ -22,6 +22,6 @@ public class UI_GameStatus : MonoBehaviour
     private void OnEnable()
     {
         UpdateTimer(_gameManager.Countdown);
-        UpdateLifebar(_gameManager.LifeController.Hp,_gameManager.LifeController.Maxhp);
+        UpdateLifebar(_gameManager.LifeController.Hp, _gameManager.LifeController.Maxhp);
     }
 }

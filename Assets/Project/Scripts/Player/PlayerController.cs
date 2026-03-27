@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class PlayerController : LifeController
+public class PlayerController : MonoBehaviour
 {
-    protected Rigidbody _rb;
+    private Rigidbody _rb;
+    private LifeController _lifeController;
 
     private float _fallHeight;
     private bool _wasGrounded;
@@ -24,6 +25,7 @@ public class PlayerController : LifeController
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _lifeController = GetComponent<LifeController>();
     }
 
     private void Update()
@@ -100,7 +102,7 @@ public class PlayerController : LifeController
         if (fallDistance > _fallThreshold)
         {
             float dmg = (fallDistance - _fallThreshold) * _minFallDmg;
-            RemoveHp(Mathf.RoundToInt(dmg));
+            _lifeController.RemoveHp(Mathf.RoundToInt(dmg));
         }
     }
 
