@@ -122,7 +122,7 @@ MonoBehaviour:
   _dmg: 10
   _speed: 15
   _explosionRadius: 3
-  _explosionForce: 500
+  _explosionForce: 100
   _playerMask:
     serializedVersion: 2
     m_Bits: 64
