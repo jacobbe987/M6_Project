@@ -10,8 +10,9 @@ public class ChargeTimeTurret : Turrets
     private bool _isShooting= false;
     protected override void Shoot()
     {
-        Instantiate(_bulletPrefab,_firePoint.position, _firePoint.rotation);
-
+        Bullets bulletObj = _objPool.Get();
+        bulletObj.transform.SetPositionAndRotation(_firePoint.position, _firePoint.rotation);
+        bulletObj.BulletPhysic();
         Debug.Log("sparato");
         
     }

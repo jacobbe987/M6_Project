@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullets : MonoBehaviour
 {
@@ -13,20 +14,17 @@ public class Bullets : MonoBehaviour
     [SerializeField] private float _explosionForce;
     [SerializeField] private LayerMask _playerMask;
 
+    private IObjectPool<Bullets> _bulletsPool;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
-    {
-        _rb.AddForce(transform.forward * _speed, ForceMode.Impulse);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         Explosion();
-        Destroy(gameObject);
+        Deactive();
     }
 
     private void Explosion()
@@ -43,5 +41,23 @@ public class Bullets : MonoBehaviour
                 playerLifeController.RemoveHp(_dmg);
             }
         }
+    }
+
+    public void SetObjPool(IObjectPool<Bullets> bulletPool)
+    {
+        _bulletsPool = bulletPool;
+    }
+
+
+    private void Deactive()
+    {
+        _rb.velocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        _bulletsPool.Release(this);
+    }
+
+    public void BulletPhysic()
+    {
+        _rb.AddForce(transform.forward * _speed, ForceMode.Impulse);
     }
 }

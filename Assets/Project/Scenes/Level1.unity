@@ -5759,6 +5759,12 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1939461769}
+    - target: {fileID: 7377967029937594814, guid: 39cba95ae8738354ba1e3854f220ba0e,
+        type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 5717145610195814110, guid: d21017991bcef1142b01333d25ffbb81,
+        type: 3}
     - target: {fileID: 7670214666655247726, guid: 39cba95ae8738354ba1e3854f220ba0e,
         type: 3}
       propertyPath: m_Name
