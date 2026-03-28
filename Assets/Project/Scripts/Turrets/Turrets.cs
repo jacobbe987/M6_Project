@@ -56,7 +56,7 @@ public abstract class Turrets : MonoBehaviour
     protected void AimAtPlayer()
     {
         Vector3 _direction = _target.position - transform.position;
-        //_firePoint.forward = transform.forward;
+        _direction.y = 0;
         transform.forward = _direction;
     }
 

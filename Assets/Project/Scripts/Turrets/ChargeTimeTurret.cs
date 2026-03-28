@@ -13,6 +13,7 @@ public class ChargeTimeTurret : Turrets
         Bullets bulletObj = _objPool.Get();
         bulletObj.transform.SetPositionAndRotation(_firePoint.position, _firePoint.rotation);
         bulletObj.BulletPhysic();
+        bulletObj.Deactive();
         Debug.Log("sparato");
         
     }

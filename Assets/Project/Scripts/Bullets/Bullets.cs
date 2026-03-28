@@ -13,6 +13,7 @@ public class Bullets : MonoBehaviour
     [SerializeField] private float _explosionRadius;
     [SerializeField] private float _explosionForce;
     [SerializeField] private LayerMask _playerMask;
+    [SerializeField] private float _lifeTime;
 
     private IObjectPool<Bullets> _bulletsPool;
 
@@ -21,11 +22,11 @@ public class Bullets : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Explosion();
-        Deactive();
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Explosion();
+    //    Deactive();
+    //}
 
     private void Explosion()
     {
@@ -49,15 +50,22 @@ public class Bullets : MonoBehaviour
     }
 
 
-    private void Deactive()
+    public void Deactive()
     {
-        _rb.velocity = Vector3.zero;
-        _rb.angularVelocity = Vector3.zero;
-        _bulletsPool.Release(this);
+        StartCoroutine(DeactiveCoroutine(_lifeTime));
     }
 
     public void BulletPhysic()
     {
         _rb.AddForce(transform.forward * _speed, ForceMode.Impulse);
+    }
+
+    public IEnumerator DeactiveCoroutine(float lifetime)
+    {
+        yield return new WaitForSeconds(lifetime);
+        Explosion();
+        _rb.velocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        _bulletsPool.Release(this);
     }
 }
