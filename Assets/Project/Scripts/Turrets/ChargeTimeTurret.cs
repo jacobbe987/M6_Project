@@ -10,6 +10,7 @@ public class ChargeTimeTurret : Turrets
     private bool _isShooting= false;
     protected override void Shoot()
     {
+        SoundFxManager._instance.PlayFxSound("CannonShot");
         Bullets bulletObj = _objPool.Get();
         bulletObj.transform.SetPositionAndRotation(_firePoint.position, _firePoint.rotation);
         bulletObj.BulletPhysic();

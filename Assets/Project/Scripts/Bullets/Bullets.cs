@@ -30,6 +30,7 @@ public class Bullets : MonoBehaviour
 
     private void Explosion()
     {
+        SoundFxManager._instance.PlayFxSound("CannonExplosion");
         Collider[] playerHitted = Physics.OverlapSphere(transform.position, _explosionRadius, _playerMask);
         if (playerHitted.Length > 0)
         {
