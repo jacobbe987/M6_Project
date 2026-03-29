@@ -400,6 +400,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: c0e1047cc276b5f49949a2bd9f3b20d3, type: 2}
+  _settingManager: {fileID: 1591653276}
+  _masterVolume: 0
+  _soundFxVolume: 0
+  _musicVolume: 0
 --- !u!4 &96979498
 Transform:
   m_ObjectHideFlags: 0
@@ -1308,6 +1312,7 @@ MonoBehaviour:
   _itemsController: {fileID: 1576432382}
   _cameraController: {fileID: 330585548}
   _lifecontroller: {fileID: 1939461778}
+  _settingManager: {fileID: 1591653276}
   _canvasGameOver: {fileID: 90742924}
   _canvasGameFinished: {fileID: 4661061297507258331}
   _canvasGameOptions: {fileID: 185505124}
@@ -4301,6 +4306,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5355ea33e4a554aa071724e6446f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1591653275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591653277}
+  - component: {fileID: 1591653276}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1591653276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591653275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f5130a54a5a8c45ba0bad430ce1c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundMixerManager: {fileID: 96979497}
+--- !u!4 &1591653277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591653275}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1610730271
 GameObject:
   m_ObjectHideFlags: 0
@@ -5182,6 +5232,7 @@ SceneRoots:
   - {fileID: 513738356}
   - {fileID: 96979498}
   - {fileID: 1009736271}
+  - {fileID: 1591653277}
   - {fileID: 1220189698}
   - {fileID: 4661061297507258330}
   - {fileID: 1575904720}

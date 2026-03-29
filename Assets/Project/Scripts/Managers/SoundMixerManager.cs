@@ -5,20 +5,32 @@ using UnityEngine.Audio;
 
 public class SoundMixerManager : MonoBehaviour
 {
-    [SerializeField] private AudioMixer _audioMixer;
+    public AudioMixer _audioMixer;
+    [SerializeField] private SettingsManager _settingManager;
 
+    public float _masterVolume;
+    public float _soundFxVolume;
+    public float _musicVolume;
+
+    private void Start()
+    {
+        _settingManager.LoadSettings();
+    }
     public void SetMasterVolume (float volume)
     {
-        _audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20f);
+        _masterVolume = volume;
+        _audioMixer.SetFloat("MasterVolume", Mathf.Log10(_masterVolume) * 20f);
     }
 
     public void SetSoundFxVolume(float volume)
     {
-        _audioMixer.SetFloat("SoundFxVolume", Mathf.Log10(volume) * 20f);
+        _soundFxVolume = volume;
+        _audioMixer.SetFloat("SoundFxVolume", Mathf.Log10(_soundFxVolume) * 20f);
     }
 
     public void SetMusicVolume(float volume)
     {
-        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20f);
+        _musicVolume = volume;
+        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(_musicVolume) * 20f);
     }
 }

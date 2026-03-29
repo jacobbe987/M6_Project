@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ItemsController _itemsController;
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private LifeController _lifecontroller;
+    [SerializeField] private SettingsManager _settingManager;
 
     [SerializeField] private Canvas _canvasGameOver;
     [SerializeField] private Canvas _canvasGameFinished;
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
     public void GameResumed()
     {
         _canvasGameOptions.gameObject.SetActive(false);
+        _settingManager.SaveSettings();
         _canvasGameStatus.gameObject.SetActive(true);
         Time.timeScale = 1;
         _cameraController.enabled = true;
