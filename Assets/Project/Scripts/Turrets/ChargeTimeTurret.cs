@@ -14,7 +14,6 @@ public class ChargeTimeTurret : Turrets
         bulletObj.transform.SetPositionAndRotation(_firePoint.position, _firePoint.rotation);
         bulletObj.BulletPhysic();
         bulletObj.Deactive();
-        Debug.Log("sparato");
         
     }
 
@@ -29,14 +28,7 @@ public class ChargeTimeTurret : Turrets
             if (!_isShooting)
             {
                 StartCoroutine(ShootRoutine());
-            }
-            //_timerToShoot += Time.deltaTime;
-            //if (_timerToShoot >= _chargetime)
-            //{
-            //    Shoot();
-            //    _timerToShoot = 0;
-            //}
-            
+            }      
         }
     }
 
