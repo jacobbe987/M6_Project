@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Canvas _canvasGameOver;
     [SerializeField] private Canvas _canvasGameFinished;
+    [SerializeField] private Canvas _canvasGameOptions;
+    [SerializeField] private Canvas _canvasGameStatus;
 
     [SerializeField] private UnityEvent<float> _onChangeCountdown;
 
@@ -56,10 +58,21 @@ public class GameManager : MonoBehaviour
         _cameraController.enabled = false;
     }
 
+    public void GameOptions()
+    {
+        _canvasGameOptions.gameObject.SetActive(true);
+        _canvasGameStatus.gameObject.SetActive(false);
+        GamePaused();
+    }
+
     public void GameResumed()
     {
+        _canvasGameOptions.gameObject.SetActive(false);
+        _canvasGameStatus.gameObject.SetActive(true);
         Time.timeScale = 1;
         _cameraController.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void AddTime(float timeCoinValue)

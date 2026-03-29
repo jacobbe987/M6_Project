@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
 
     private float _fallHeight;
     private bool _wasGrounded;
-    
+
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private bool _isGrounded;
+
+    [SerializeField] private GameManager _gamemanager;
 
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _groundSphere = 0.3f;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        PauseGame();
         GroundCheck();
         Jump();
     }
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
         Vector3 forward = Camera.main.transform.forward;
         forward.y = 0;
         transform.forward = forward;
-        
+
 
         float xDir = Input.GetAxis("Horizontal");
         float zDir = Input.GetAxis("Vertical");
@@ -64,9 +67,9 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if(Input.GetButtonDown("Jump") && _isGrounded)
+        if (Input.GetButtonDown("Jump") && _isGrounded)
         {
-            _rb.AddForce(Vector3.up*_jumpForce,ForceMode.Impulse);
+            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
     }
 
@@ -77,14 +80,14 @@ public class PlayerController : MonoBehaviour
         _isGrounded = Physics.CheckSphere(_groundCheck.position, _groundSphere, _groundMask);
 
 
-        if (!_isGrounded && _wasGrounded &&_rb.velocity.y<0 && _rb.velocity.y>-1)
+        if (!_isGrounded && _wasGrounded && _rb.velocity.y < 0 && _rb.velocity.y > -1)
         {
             float rayLength = 20f;
             Ray ray = new Ray(_groundCheck.position, Vector3.down);
             Physics.Raycast(ray, out RaycastHit hit, rayLength, _groundMask);
             //Debug.DrawRay(ray.origin, ray.direction *rayLength, Color.red);
             _fallHeight = hit.distance;
-            
+
         }
 
         if (_isGrounded && !_wasGrounded)
@@ -103,6 +106,14 @@ public class PlayerController : MonoBehaviour
         {
             float dmg = (fallDistance - _fallThreshold) * _minFallDmg;
             _lifeController.RemoveHp(Mathf.RoundToInt(dmg));
+        }
+    }
+
+    private void PauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            _gamemanager.GameOptions();
         }
     }
 
