@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-        if (_itemsController.Coins >= 100)
+        if (_itemsController.Coins >= 5)
         {
             GameFinished();
         }

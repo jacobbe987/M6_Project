@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1273480609647105350, guid: 6ccd75954641c8e45933f872259b6837,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1436370851824352537, guid: 6ccd75954641c8e45933f872259b6837,
         type: 3}
       propertyPath: m_fontSize
