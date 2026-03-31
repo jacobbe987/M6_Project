@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundFxManager : MonoBehaviour
 {
-    public static SoundFxManager _instance;
+    public static SoundFxManager _instance { get; private set; }
 
     [SerializeField] private List<Sound> _fxSounds;
     [SerializeField] private AudioSource _audioSource;
@@ -28,7 +27,7 @@ public class SoundFxManager : MonoBehaviour
         if (clip != null)
         {
             _audioSource.clip = clip._soundClip;
-            _audioSource.Play();
+            _audioSource.PlayOneShot(_audioSource.clip);
         }
     }
 

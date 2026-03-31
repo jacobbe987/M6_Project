@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -56,10 +53,10 @@ public class PlayerController : MonoBehaviour
         Vector3 velocity = direction * _speed;
         //_rb.velocity = new Vector3(_velocity.x, _rb.velocity.y, _velocity.z);
 
-        if (direction != Vector3.zero)
-        {
-            transform.forward = forward;
-        }
+        //if (direction != Vector3.zero)
+        //{
+        //    transform.forward = forward;
+        //}
         Vector3 movement = direction * _speed * Time.fixedDeltaTime;
         Vector3 newPosition = _rb.position + movement;
         _rb.MovePosition(newPosition);

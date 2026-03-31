@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -7,6 +5,9 @@ public class SoundMixerManager : MonoBehaviour
 {
     public AudioMixer _audioMixer;
     [SerializeField] private SettingsManager _settingManager;
+    //[SerializeField] public Slider _sliderMaster;
+    //[SerializeField] public Slider _sliderSoundFx;
+    //[SerializeField] public Slider _sliderMusic;
 
     public float _masterVolume;
     public float _soundFxVolume;
@@ -15,6 +16,10 @@ public class SoundMixerManager : MonoBehaviour
     private void Start()
     {
         _settingManager.LoadSettings();
+
+        //SetSlider(_sliderMaster, _masterVolume);
+        //SetSlider(_sliderSoundFx, _soundFxVolume);
+        //SetSlider(_sliderMusic, _musicVolume);
     }
     public void SetMasterVolume (float volume)
     {
@@ -33,4 +38,9 @@ public class SoundMixerManager : MonoBehaviour
         _musicVolume = volume;
         _audioMixer.SetFloat("MusicVolume", Mathf.Log10(_musicVolume) * 20f);
     }
+
+    //public void SetSlider(Slider channel, float volume)
+    //{
+    //    channel.value = volume;
+    //}
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SettingsManager : MonoBehaviour
@@ -14,8 +12,12 @@ public class SettingsManager : MonoBehaviour
 
     public void LoadSettings()
     {
-            _soundMixerManager._masterVolume = PlayerPrefs.GetFloat("VolumeMaster", 1);
-            _soundMixerManager._soundFxVolume = PlayerPrefs.GetFloat("VolumeSoundFx", 1);
-            _soundMixerManager._musicVolume = PlayerPrefs.GetFloat("VolumeMusic", 1);
+        _soundMixerManager._masterVolume = PlayerPrefs.GetFloat("VolumeMaster", 1);
+        _soundMixerManager._soundFxVolume = PlayerPrefs.GetFloat("VolumeSoundFx", 1);
+        _soundMixerManager._musicVolume = PlayerPrefs.GetFloat("VolumeMusic", 1);
+
+        //_soundMixerManager.SetSlider(_soundMixerManager._sliderMaster, _soundMixerManager._masterVolume);
+        //_soundMixerManager.SetSlider(_soundMixerManager._sliderSoundFx, _soundMixerManager._soundFxVolume);
+        //_soundMixerManager.SetSlider(_soundMixerManager._sliderMusic, _soundMixerManager._musicVolume);
     }
 }
